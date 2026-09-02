@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "evidence_class": "released-public verified",
+  "source": {
+    "families": {"normal": 1000, "hard1": 69, "hard2": 200, "hard3": 400},
+    "rows": 1669
+  },
+  "evaluator": {
+    "repository": "SAIRcompetition/equational-theories-lean-stage2",
+    "commit": "817a4653bf762584931d49c6714c9fcfab7df66a",
+    "lean_version": "4.33.1"
+  },
+  "artifacts": {
+    "marathon_safe": {
+      "sha256": "05e3b837d8cdac8a0299fe66592bde787e57b10c50a0eefe24d6fdf9ae4f3d5c",
+      "accepted": 1669,
+      "tokens_used": 0,
+      "solver_wall_seconds": 168.9981378330267
+    },
+    "marathon_aggressive": {
+      "sha256": "c87e44bda89f08dad7a8a12147b28ba77a2fe288c3c3947c4dfe06b2154b8c21",
+      "accepted": 1669,
+      "tokens_used": 0,
+      "solver_wall_seconds": 152.2312871249742
+    }
+  },
+  "paired_wall_improvement_percent": 9.921322757188,
+  "claim_boundary": "This paired same-host measurement covers released inputs. Production billing and private-row performance remain unknown."
+}

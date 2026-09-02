@@ -1,5 +1,7 @@
 # Reproducibility
 
+[繁體中文](zh-TW/reproducibility.md) · [English](reproducibility.md)
+
 ## Frozen identities
 
 Use these full SHA-256 values when reproducing a final artifact:

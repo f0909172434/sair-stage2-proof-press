@@ -1,5 +1,7 @@
 # Research timeline
 
+[繁體中文](zh-TW/research-timeline.md) · [English](research-timeline.md)
+
 This chronology is a reading guide to the machine records. It separates scientific outcomes from compatibility checks, source failures, and governance stops. The authoritative records are `experiments/RANK1_EXPERIMENT_LEDGER.jsonl`, the H-series evidence files, and the final artifact manifest.
 
 ## Deterministic solver checkpoints
@@ -101,9 +103,9 @@ The H20-H27 paid ledger contains ten positive-cost records totaling US$0.9180127
 | H60 | Canonical freeze manifest for the same ranking question | Source materialized, but two rows invalidated the observer/schema/infrastructure gate before capacity evaluation; unscored. |
 | H61 | Fresh-family production-abstention capacity | The frozen enumerator hit a source-capacity shortfall before candidate execution; unscored. |
 | H62 | Flat-global hardness-conditioned abstention capacity | Repository root and official evaluator root were confused before source enumeration; execution substrate invalid. |
-| H63 | Official-root-bound flat-global capacity | The sole preflight used Python 3.9.6 instead of frozen Python 3.11.16. It stopped before source access; incumbent locked and lineage closed. |
+| H63 | Official-root-bound flat-global capacity | The sole preflight used Python 3.9.6; the frozen contract required Python 3.11.16. It stopped before source access; incumbent locked and lineage closed. |
 
-H57 answered the measurement question it preregistered. It did not show that ancestry features predict useful search decisions. H58-H63 therefore remain governance, identity, source, or execution outcomes rather than evidence for or against learned ranking.
+H57 answered the measurement question it preregistered. Ancestry-feature predictive value remained unmeasured. H58-H63 therefore retain their governance, identity, source, or execution classifications and provide no learned-ranking evidence.
 
 ## Candidate 28 and the final sprint
 

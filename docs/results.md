@@ -1,5 +1,7 @@
 # Results
 
+[繁體中文](zh-TW/results.md) · [English](results.md)
+
 ## Final released-input evaluation
 
 All rows in this section came from released official sources and were checked with official evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` and Lean 4.33.1.
@@ -11,12 +13,12 @@ All rows in this section came from released official sources and were checked wi
 | Marathon Safe | 1,669 | 1,669 | 0 tokens | 169.00 s |
 | Marathon Aggressive | 1,669 | 1,669 | 0 tokens | 152.23 s |
 
-The 1,669 rows combine `normal` (1,000), `hard1` (69), `hard2` (200), and `hard3` (400). Eight Solo family runs overlapped, so summed Solo row time is a cost measure rather than outer wall-clock time. Marathon Aggressive was 9.92% faster than Marathon Safe on this released batch.
+The 1,669 rows combine `normal` (1,000), `hard1` (69), `hard2` (200), and `hard3` (400). Eight Solo family runs overlapped. Summed Solo row time therefore measures cost and does not represent outer wall-clock time. Marathon Aggressive was 9.92% faster than Marathon Safe on this released batch.
 
 Sources:
 
-- [`dist/final/benchmarks/solo_public1669_current_official_20260830.json`](../dist/final/benchmarks/solo_public1669_current_official_20260830.json)
-- [`dist/final/benchmarks/marathon_public1669_current_official_20260830.json`](../dist/final/benchmarks/marathon_public1669_current_official_20260830.json)
+- [`solo-public-1669.json`](evidence/solo-public-1669.json)
+- [`marathon-public-1669.json`](evidence/marathon-public-1669.json)
 
 ## Released Order-5 study
 
@@ -25,12 +27,12 @@ Sources:
 | Marathon Safe | 200 | 198 | 2 | 0 | 170.59 s |
 | Marathon Aggressive | 200 | 200 | 0 | 0 | 143.30 s |
 
-The +2 difference supports a narrow claim about the released Order-5 set. It is not evidence of hidden-distribution gain.
+The +2 difference supports a narrow claim about the released Order-5 set. Hidden-distribution gain remains unmeasured.
 
 Sources:
 
-- [`dist/final/benchmarks/marathon_safe_order5_200_current_official_20260830.json`](../dist/final/benchmarks/marathon_safe_order5_200_current_official_20260830.json)
-- [`dist/final/benchmarks/marathon_aggressive_order5_200_current_official_20260830.json`](../dist/final/benchmarks/marathon_aggressive_order5_200_current_official_20260830.json)
+- [`marathon-safe-order5-200.json`](evidence/marathon-safe-order5-200.json)
+- [`marathon-aggressive-order5-200.json`](evidence/marathon-aggressive-order5-200.json)
 
 ## Deterministic checkpoint progression
 

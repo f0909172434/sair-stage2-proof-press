@@ -1,5 +1,7 @@
 # Publication readiness
 
+[繁體中文](zh-TW/publication-readiness.md) · [English](publication-readiness.md)
+
 ## Decision
 
 The full evidence repository and its existing Git history are not safe to make public as-is. A sanitized companion repository is ready to proceed through the release gate below.

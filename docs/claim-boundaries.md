@@ -1,5 +1,7 @@
 # Claim boundaries
 
+[繁體中文](zh-TW/claim-boundaries.md) · [English](claim-boundaries.md)
+
 ## Evidence hierarchy
 
 Use the narrowest applicable label.

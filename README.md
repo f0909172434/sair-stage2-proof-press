@@ -1,6 +1,6 @@
 # Proof Press — SAIR Stage 2 Lean 證書型 Solver
 
-[繁體中文](#繁體中文) · [English](#english) · [互動網站](https://f0909172434.github.io/sair-stage2-proof-press/) · [研究論文](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) · [官方 Contributor Network](https://competition.sair.foundation/contributor-network?competition=mathematics-distillation-challenge-equational-theories-stage2)
+[繁體中文](#繁體中文) · [English](#english) · [互動網站](https://f0909172434.github.io/sair-stage2-proof-press/) · [繁體中文論文](paper/main.zh-TW.md) · [英文論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) · [官方 Contributor Network](https://competition.sair.foundation/contributor-network?competition=mathematics-distillation-challenge-equational-theories-stage2)
 
 > 把猜想壓成證明。Search 可以提出候選，只有 Lean 接受的證書能成為結果。
 
@@ -56,7 +56,7 @@
 - H22 可讓模型提議型別化 waypoint，但文字必須先經 bounded compiler 並交給 Lean。
 - Marathon 先做便宜的確定性工作，保留全域時間／token 預算，append 並同步已驗證答案，絕不以較差答案覆寫可信答案。
 
-完整說明見 [方法論](docs/methodology.md)。
+完整說明見 [繁體中文方法論](docs/zh-TW/methodology.md)。
 
 ### 研究歷程與負結果
 
@@ -69,7 +69,7 @@ Candidate 1–7 建立確定性主幹；H1–H63 依序測試效能、來源、L
 - Candidate 28 只完成 preregistration 與 remote readback；沒有 implementation，也沒有科學結果。
 - 其他許多記錄是 source shortage、governance block、instrumentation invalid 或 infrastructure stop；不能改寫成「方法被證偽」。
 
-詳見 [H1–H63 時間線](docs/research-timeline.md)、[結果](docs/results.md) 與 [聲明邊界](docs/claim-boundaries.md)。
+詳見 [H1–H63 繁體中文時間線](docs/zh-TW/research-timeline.md)、[繁體中文結果](docs/zh-TW/results.md) 與 [繁體中文聲明邊界](docs/zh-TW/claim-boundaries.md)。
 
 ### 成本
 
@@ -81,12 +81,13 @@ Candidate 1–7 建立確定性主幹；H1–H63 依序測試效能、來源、L
 
 公開倉庫採 allowlist 式乾淨快照。完整 evidence Git 歷史仍保持私有，因為舊 commit 含非必要的個人 email、絕對路徑、team／conversation identifier、授權文字與 host 指紋；普通刪除 commit 無法從 Git history 移除那些 bytes。
 
-詳見 [發布準備](docs/publication-readiness.md)、[安全稽核](docs/security-audit-2026-09-02.md) 與 [重現說明](docs/reproducibility.md)。安全問題請依 [SECURITY.md](SECURITY.md) 私下回報。
+詳見 [繁體中文發布準備](docs/zh-TW/publication-readiness.md)、[繁體中文安全稽核](docs/zh-TW/security-audit-2026-09-02.md) 與 [繁體中文重現說明](docs/zh-TW/reproducibility.md)。安全問題請依 [繁體中文安全政策](SECURITY.zh-TW.md) 私下回報。
 
 ### 網站與論文
 
 - [Proof Press 互動網站](https://f0909172434.github.io/sair-stage2-proof-press/)：拖動壓力桿，體驗 conjecture → candidate → Lean judge → claimable fact；可篩選 H1–H63 並切換中英文。
-- [研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf)：solver 架構、治理方法、結果、成本、限制與重現資訊。
+- [繁體中文研究論文](paper/main.zh-TW.md)：完整整理 solver 架構、治理方法、結果、成本、限制與重現資訊。
+- [英文研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf)：可下載的六頁英文論文。
 - 網站原始碼在 [`site/`](site/)；本地執行：`cd site && npm ci && npm run build`。
 
 ---
@@ -141,7 +142,7 @@ Candidate 1–7 built the deterministic backbone. H1–H63 tested runtime change
 - H45 and H49 are valid scoped scientific failures.
 - H57 passed measurement reliability and label capacity only; it established no ranking or solved-count gain.
 - Candidate 28 reached preregistration and remote readback only. It has no implementation or scientific result.
-- Source shortages, governance blocks, invalid instrumentation, and infrastructure stops are preserved under their real names rather than reported as falsified methods.
+- Source shortages, governance blocks, invalid instrumentation, and infrastructure stops retain their recorded operational labels. They do not become falsified methods.
 
 See the [H1–H63 timeline](docs/research-timeline.md), [Results](docs/results.md), and [Claim boundaries](docs/claim-boundaries.md).
 

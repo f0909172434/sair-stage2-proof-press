@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "evidence_class": "released-public verified",
+  "source": {"role": "RELEASED_PUBLIC_ORDER5", "rows": 200},
+  "evaluator": {
+    "commit": "817a4653bf762584931d49c6714c9fcfab7df66a",
+    "lean_version": "4.33.1"
+  },
+  "artifact": {
+    "id": "marathon_safe",
+    "sha256": "05e3b837d8cdac8a0299fe66592bde787e57b10c50a0eefe24d6fdf9ae4f3d5c"
+  },
+  "result": {
+    "accepted": 198,
+    "not_attempted": 2,
+    "incorrect_or_malformed": 0,
+    "tokens_used": 0,
+    "solver_wall_seconds": 170.5919789999607
+  },
+  "claim_boundary": "This record covers the complete released Order-5 source. Private score and hidden-distribution performance remain unknown."
+}

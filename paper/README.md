@@ -1,5 +1,7 @@
 # Paper
 
+[繁體中文論文](main.zh-TW.md) · [English PDF](../output/pdf/sair_stage2_solver_research.pdf) · [English LaTeX](main.tex)
+
 `main.tex` and `references.bib` are the source for the project paper. The manuscript reports released-input results, governed research outcomes, cost, and limitations. It does not claim a private score or rank.
 
 Build from the repository root:

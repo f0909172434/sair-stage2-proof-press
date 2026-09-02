@@ -1,5 +1,7 @@
 # Security and publication audit, 2026-09-02
 
+[繁體中文](zh-TW/security-audit-2026-09-02.md) · [English](security-audit-2026-09-02.md)
+
 ## Scope and result
 
 A Standard Codex Security review audited repository revision `56684f74569d21da043d4dc4a40e47ff9bae80bd` for publication risks. All 1,850 tracked files received pattern scanning. Publication-relevant runners, governance records, manifests, workflows, provider evidence, and final artifact contracts received focused source review.

@@ -1,5 +1,7 @@
 # Security policy
 
+[繁體中文](SECURITY.zh-TW.md) · [English](SECURITY.md)
+
 ## Supported state
 
 Security fixes apply to the current default publication branch and the four frozen final artifacts. Historical experiment code is retained for reproducibility and may be inactive. A report about historical code should state whether the path remains reachable in a current workflow.

@@ -1,5 +1,7 @@
 # Methodology
 
+[繁體中文](zh-TW/methodology.md) · [English](methodology.md)
+
 ## Task contract
 
 Each input contains two equations over a magma. A true verdict requires Lean code proving that every magma satisfying the first equation also satisfies the second. A false verdict requires a Lean-checkable countermodel. The official judge accepts a certificate or returns one of four non-accepted states; model confidence and heuristic scores never count directly.

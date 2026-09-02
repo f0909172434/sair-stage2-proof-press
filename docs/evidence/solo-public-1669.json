@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "evidence_class": "released-public verified",
+  "source": {
+    "families": {"normal": 1000, "hard1": 69, "hard2": 200, "hard3": 400},
+    "rows": 1669
+  },
+  "evaluator": {
+    "repository": "SAIRcompetition/equational-theories-lean-stage2",
+    "commit": "817a4653bf762584931d49c6714c9fcfab7df66a",
+    "lean_version": "4.33.1"
+  },
+  "artifacts": {
+    "solo_safe": {
+      "sha256": "a81025ac454e964365f5b53b1928af3d4e4276f374d62d5b05f34264afada85a",
+      "accepted": 1669,
+      "failed": 0,
+      "model_calls": 0,
+      "aggregate_row_seconds": 4304.60
+    },
+    "solo_aggressive": {
+      "sha256": "faf8468e6183638d35607c3bf1ae0685da838f3bfed7009c9bd5b6402071e70a",
+      "accepted": 1669,
+      "failed": 0,
+      "model_calls": 0,
+      "aggregate_row_seconds": 4344.14
+    }
+  },
+  "claim_boundary": "These figures describe exact released inputs under the named evaluator. Private score and hidden-distribution performance remain unknown."
+}
