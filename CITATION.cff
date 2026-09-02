@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this solver or research record, please cite the repository and paper."
+title: "Lean-Certified Portfolio Solving for Equational Implication"
+type: software
+authors:
+  - name: "f0909172434"
+repository-code: "https://github.com/f0909172434/sair-math-distillation-challenge"
+license: Apache-2.0
+version: "2026-09-02"
+date-released: "2026-09-02"

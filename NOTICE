@@ -1,0 +1,29 @@
+SAIR Stage 2 solver research repository
+Copyright 2026 f0909172434
+
+This product includes software and documentation derived from the SAIR
+Mathematics Distillation Challenge, Equational Theories Stage 2 evaluator:
+
+  https://github.com/SAIRcompetition/equational-theories-lean-stage2
+  Copyright 2026 SAIR Foundation
+  Licensed under the Apache License, Version 2.0.
+
+Repository-specific solvers modify and extend the official demo/protocol
+lineage with deterministic proof search, finite countermodel catalogs,
+paramodulation, Marathon adapters, and bounded model-assisted controllers.
+Modified files retain applicable upstream notices.
+
+This product also uses or derives public mathematical data and operation
+tables from the Equational Theories Project:
+
+  https://github.com/teorth/equational_theories
+  Copyright 2025 Contributors of the Equational Theories Project
+  Licensed under the Apache License, Version 2.0.
+
+The four published solver files retain the catalog's upstream notice and
+pinned source revision. The paper describes the extraction boundary and
+aggregate catalog counts. Operational generation records remain in the
+private evidence repository.
+
+Lean and Mathlib are external dependencies and are not vendored here. Their
+respective upstream licenses apply.

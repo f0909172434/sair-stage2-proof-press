@@ -1,0 +1,267 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.82in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+
+\definecolor{LinkBlue}{HTML}{174A7E}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=LinkBlue,
+  citecolor=LinkBlue,
+  urlcolor=LinkBlue,
+  pdftitle={Lean-Certified Portfolio Solving for Equational Implication},
+  pdfauthor={f0909172434}
+}
+\setlist{nosep,leftmargin=*}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\status}[1]{\textsc{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Lean-certified equational reasoning for SAIR Stage 2}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\title{Lean-Certified Portfolio Solving for Equational Implication\\\large Methods, governed experiments, and a four-artifact SAIR Stage 2 submission}
+\author{f0909172434}
+\date{September 2, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We describe a compact solver portfolio for the SAIR Mathematics Distillation Challenge, Equational Theories Stage 2. Each answer requires a Lean-checkable implication proof or countermodel certificate. The system combines direct templates, exhaustive and structured finite models, a revision-bound catalog of 645 public finite magmas, proof-producing paramodulation, symbolic narrowing, goal-guided beam search, and a bounded model-assisted waypoint compiler. We submitted Safe and Aggressive variants to both Solo and Marathon tracks. Under the pinned official evaluator and Lean 4.33.1, all four artifacts accepted 1,669 of 1,669 released Normal/Hard rows without model calls. On a separate released 200-row Order-5 set, Marathon Safe accepted 198 rows and Aggressive accepted 200. Marathon Aggressive completed the 1,669-row batch in 152.23 solver-seconds, 9.92\% faster than Safe. We also report the governed research record behind the artifacts: one reusable proof-search line, two scoped scientific negative results, several model-assisted gates, and many source, instrumentation, infrastructure, or governance stops. Ten positive-cost provider records total US\$0.918012780. The competition remained in evaluation when this manuscript was prepared, so we make no claim about private score or rank.
+\end{abstract}
+
+\section{Task and evidence boundary}
+
+Stage 2 asks whether one magma equation universally implies another \cite{sair2026stage2,equationaltheories2025}. A True answer must include Lean code proving the implication for every magma. A False answer must include a Lean-checkable witness where the hypothesis holds and the goal fails. The deterministic judge accepts a certificate or returns a non-accepted status; heuristic confidence never contributes to score.
+
+The competition exposes two execution contracts. Solo starts a fresh solver process for each problem with a 3,600-second per-problem budget. Marathon sends a manifest of $N$ problems to one process with a shared $N\times300$-second wall budget and $N\times32{,}768$ model-token budget. Both use a single \code{solver.py} of at most 500 KB and the same Lean judge \cite{sairevaluator2026}.
+
+We use six evidence classes throughout this paper:
+
+\begin{itemize}
+  \item \emph{released-public verified}: an exact artifact was accepted on identified released rows by the pinned official local evaluator;
+  \item \emph{compatibility or measurement pass}: a bounded protocol, environment, or instrumentation question passed;
+  \item \emph{scientific fail}: a valid preregistered mechanism missed its terminal scientific gate;
+  \item \emph{blocked or invalid}: source, governance, identity, instrumentation, or infrastructure prevented inference;
+  \item \emph{formal readback}: the portal displayed a matching submitted entry;
+  \item \emph{official result}: an organizer-published private score or rank, which was unavailable at manuscript time.
+\end{itemize}
+
+This vocabulary prevents a local smoke test from becoming a hidden-set claim and prevents an infrastructure error from being reported as evidence against a mathematical idea.
+
+\section{Solver architecture}
+
+\subsection{Certificate-first routing}
+
+The solver parses each equation into an abstract syntax tree, renames variables by first occurrence, normalizes orientation, and runs a fixed sequence of bounded certificate generators. Every lane either returns a replayable proof or countermodel candidate, or abstains. Lean 4 is the final authority \cite{demoura2021lean4}.
+
+The first lanes implement reflexivity, substitution instances, constant and singleton consequences, and fixed rewrite templates. These short paths handle common structural implications without search.
+
+\subsection{Finite countermodels}
+
+The False portfolio enumerates small operations on \code{Fin 2} and \code{Fin 3}, followed by structured larger carriers. One useful family is
+\[
+  x*y = ax + by + c \pmod n.
+\]
+Candidate 6 added 645 deduplicated operation tables derived from a revision-pinned public Equational Theories source. The builder removed equation identifiers and implication mappings. At runtime, a table counts only after direct evaluation shows that it satisfies the hypothesis and refutes the goal.
+
+\subsection{Proof-producing search}
+
+Candidate 5 introduced bounded paramodulation, using standardization-apart, occurs-checked unification, a proof DAG, and fixed bounds on term size, depth, retained rules, processed candidates, and queue size. The design follows the certificate-producing tradition of resolution and completion \cite{robinson1965machine,knuth1970simple}; it does not emit a Lean proof until the target has been derived and every proof edge can be replayed.
+
+Candidate 7 made paramodulation goal-directed. Fixed structural scores and serial tie-breakers seek direct or symmetric target instances while retaining deterministic output. Symbolic narrowing and a goal-guided beam add bounded alternatives after the paramodulation lanes.
+
+H19 added an expanded goal-paramodulation stage plus ordered forward and backward demodulation, tautology deletion, unit-equation subsumption, and deterministic goal-distance selection. It produced 15 candidate-only accepted certificates in discovery and five in one-shot validation, then preserved every solve and certificate projection on 1,669 released rows and a 200-row Order-5 safety set.
+
+\subsection{Bounded model assistance}
+
+H22 asks a model for typed proof waypoints. A compiler parses the response into a bounded plan, constrains the available proof actions, and submits only generated Lean certificates to the judge. Calibration, disjoint evaluation, and released safety gates passed in the governed H22 lineage. A protected promotion attempt later exhausted its execution capacity and produced no terminal scientific evidence.
+
+Aggressive artifacts retain this controller as a fail-closed fallback. Safe artifacts do not depend on it. The final released-input runs never invoked a model because deterministic lanes solved every row.
+
+\subsection{Marathon execution}
+
+The Marathon adapters keep the certificate machinery in one persistent process. The Aggressive implementation deduplicates IDs, performs a deterministic first pass, orders residuals, and reserves time and model budgets. Answers are appended and synchronized so partial progress survives termination. Persistent state also allows cached tables and imported proof payloads to be reused.
+
+\section{Research governance}
+
+Candidate 26 used a sequential gate discipline. Each hypothesis froze its source roles, identities, work caps, metrics, and terminal decision before scientific output was opened. Static implementation and contract tests preceded source materialization. Disjoint evaluation opened only after the frozen calibration gate passed. Commits were pushed and read back from GitHub between consequential phases.
+
+This procedure limited post-hoc threshold movement but made measurement defects visible. H51--H63 repeatedly asked whether proof-ancestry labels could be collected from the exact production path before a ranking model was fitted. H57 established a narrow measurement result: 1,024 stable final-rule-DAG snapshots, including 997 rows with materialized noninitial rules. It did not establish predictive signal, ranking value, or solved-count gain. Later hypotheses stopped on total-order infeasibility, identity mismatches, schema caps, source shortages, root binding, or Python-version mismatch.
+
+Candidate 28 opened a separate lineage. Its preregistration froze one label-free structural-family predicate and a reallocation among four existing goal-directed paramodulation lanes. Baseline and treatment retained equal totals of 1,424 rules and 4,784 candidates. The preregistration was remotely read back, but no implementation or scientific run followed.
+
+\section{Released-input results}
+
+All results in this section use official evaluator commit \code{817a4653bf762584931d49c6714c9fcfab7df66a} and Lean 4.33.1. The 1,669-row set contains 1,000 Normal, 69 Hard1, 200 Hard2, and 400 Hard3 problems.
+
+\begin{table}[ht]
+\centering
+\caption{Final artifacts on 1,669 released rows. Solo times sum per-row solver elapsed time; Marathon times are batch solver wall time.}
+\label{tab:final1669}
+\begin{tabularx}{\textwidth}{l r r r r}
+\toprule
+Artifact & Accepted & Model use & Time (s) & Size (bytes) \\
+\midrule
+Solo Safe & 1,669/1,669 & 0 calls & 4,304.60 & 268,763 \\
+Solo Aggressive & 1,669/1,669 & 0 calls & 4,344.14 & 360,443 \\
+Marathon Safe & 1,669/1,669 & 0 tokens & 169.00 & 272,898 \\
+Marathon Aggressive & 1,669/1,669 & 0 tokens & 152.23 & 366,197 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Marathon Aggressive was 9.92\% faster than Safe on the paired released batch. The result is a workload-specific runtime measurement, not evidence that Aggressive generalizes better to private inputs.
+
+\begin{table}[ht]
+\centering
+\caption{Released Order-5 Marathon study.}
+\label{tab:order5}
+\begin{tabularx}{0.82\textwidth}{l r r r r}
+\toprule
+Artifact & Accepted & Abstained & Tokens & Time (s) \\
+\midrule
+Marathon Safe & 198/200 & 2 & 0 & 170.59 \\
+Marathon Aggressive & 200/200 & 0 & 0 & 143.30 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The two Aggressive-only certificates came from released-public deterministic recoveries: a deeper right-branch H19 proof and a singleton-forcing source proof. Both were checked by the current official judge with no axioms.
+
+\subsection{Checkpoint progression}
+
+\begin{table}[ht]
+\centering
+\caption{Historical deterministic checkpoints on released inputs.}
+\label{tab:checkpoints}
+\begin{tabularx}{\textwidth}{l Y r r r}
+\toprule
+Checkpoint & Main addition & Sample-200 & Hard1 & Hard2 \\
+\midrule
+Candidate 1 & Initial deterministic portfolio & 162/200 & -- & -- \\
+Candidate 2 & Expanded templates and finite search & 172/200 & -- & -- \\
+Candidate 3 & Symbolic narrowing & 189/200 & -- & -- \\
+Candidate 4 & Goal-guided beam & 196/200 & -- & -- \\
+Candidate 5 & Proof-producing paramodulation & 197/200 & 44/69 & 156/200 \\
+Candidate 6 & Public finite-magma catalog & 197/200 & 67/69 & 192/200 \\
+Candidate 7 & Goal-directed paramodulation & 197/200 & 68/69 & 195/200 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Candidate 7 also recorded 999/1,000 on released Normal, twice, with zero judge rejections. These checkpoints predate the final four artifacts.
+
+\section{What the negative and blocked results show}
+
+H45 and H49 are the two scoped scientific failures in the late research program. H45 found that its preregistered residual-cluster mechanism did not meet the frozen scientific gate. H49 found insufficient causal strategy value under a verified source identity. These results argue against those bounded mechanisms and populations; they do not establish that all routing or learned search control is ineffective.
+
+Other terminal records answer operational questions. H20 and H23 failed positive calibration gates. H25 and H27 passed calibration but failed disjoint evaluation. H29 passed a provider-free total-response robustness test. H35, H37, and H43 passed local compatibility questions. H32, H38--H42, H47, and H63 stopped on infrastructure. H36, H48, H51, and H55 stopped on governance or identity. H50 and H61 stopped on source capacity. H52--H54 and H56 stopped on invalid instrumentation or schema conditions. Calling all of these \emph{failed methods} would erase the distinction between a falsified mechanism and an experiment that never measured it.
+
+\begin{table}[ht]
+\centering
+\caption{Compressed terminal map for H1--H63. The repository timeline provides one row per hypothesis.}
+\label{tab:hmap}
+\begin{tabularx}{\textwidth}{l Y}
+\toprule
+Range & Main terminal outcomes \\
+\midrule
+H1--H9 & Structural repair and deterministic runtime candidates; no production promotion under frozen cost/safety gates. \\
+H10--H18 & One contradictory proxy run, one redundant bridge, several source/oracle shortages, and a valid H18 source that opened H19. \\
+H19 & Reusable proof-search line with discovery, disjoint validation, and released no-refit safety passes. \\
+H20--H28 & Model-assisted calibration/evaluation sequence; H22 was the positive bounded mechanism, while later protected promotion remained unscored. \\
+H29--H35 & Robustness pass, source/capacity stops, one stale-audit block, a public method census, and a dependency-complete compatibility pass. \\
+H36--H43 & Marathon protocol and dependency lineage; H37 and H43 are compatibility passes, not hidden-set results. \\
+H44--H49 & Public method diagnosis, one unconfirmed association, governance blocks, and scoped scientific failures at H45 and H49. \\
+H50--H63 & Proof-ancestry measurement lineage; H57 passed measurement reliability and label capacity, while surrounding hypotheses were unscored or infeasible. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Cost and model selection}
+
+The final released-input evaluations used zero model calls. The broader project was not zero-cost: provider-backed H20--H27 research contains ten positive-cost ledger entries totaling US\$0.918012780.
+
+The four portal entries paired Aggressive artifacts with \code{openai/gpt-oss-120b} at low reasoning effort and Safe artifacts with \code{google/gemma-4-31b-it}. This was a slot-allocation decision. Aggressive variants had the larger bounded model-assisted surface and used the model profile selected by final-sprint public probes. Safe variants emphasized a conservative deterministic path and used a second model family to reduce correlated fallback risk. Released final runs exercised neither model, so the repository contains no evidence that either portal model improved the 1,669-row result.
+
+\section{Submission integrity and reproducibility}
+
+Each artifact is identified by a full SHA-256 digest:
+
+\begin{longtable}{p{0.23\textwidth}p{0.70\textwidth}}
+\toprule
+Artifact & SHA-256 \\
+\midrule
+Solo Safe & \code{a81025ac454e964365f5b53b1928af3d4e4276f374d62d5b05f34264afada85a} \\
+Solo Aggressive & \code{faf8468e6183638d35607c3bf1ae0685da838f3bfed7009c9bd5b6402071e70a} \\
+Marathon Safe & \code{05e3b837d8cdac8a0299fe66592bde787e57b10c50a0eefe24d6fdf9ae4f3d5c} \\
+Marathon Aggressive & \code{c87e44bda89f08dad7a8a12147b28ba77a2fe288c3c3947c4dfe06b2154b8c21} \\
+\bottomrule
+\end{longtable}
+
+The post-submission audit passed the final packet verifier, nine focused contract tests, Solo sample-20 for both variants, and Marathon normal-5 for both variants. The portal displayed four entries whose track, model, file size, and local hash binding matched the frozen artifacts. This readback proves submission, not evaluation success.
+
+Reproduction requires the official evaluator revision above, Lean 4.33.1, exact solver hashes, and released source identities. Private evaluation inputs and organizer routing are unavailable. On macOS, one official \code{lake env} discovery path stalled; successful runs used direct Lean/Lake 4.33.1 binaries and an explicit judge search path. This workaround changed the environment entry path, not solver semantics.
+
+\section{Limitations}
+
+The released benchmark is broad but not hidden. It may share structural regularities with the public data and the finite-magma catalog. The two Order-5 gains are narrow, known-source recoveries. Safe and Aggressive differ in code size, deterministic lanes, scheduling, and fallback behavior, so their runtime comparison is descriptive rather than a controlled algorithmic ablation.
+
+No local test reproduces the complete organizer sandbox, private distribution, provider routing, or production scheduling. The portal had not published a score or rank when this paper was written. We therefore report exact released-input acceptance and formal readback while leaving the competition outcome blank.
+
+The H-series contains many more governance records than scientific trials. Preregistration reduced researcher degrees of freedom, but it also created terminal stops for minor identity and environment defects. A future protocol should separate immutable scientific decisions from replaceable execution substrate identities, while preserving a one-shot rule for scientific data.
+
+\section{Conclusion}
+
+A deterministic-first, certificate-producing portfolio solved every released Normal/Hard row in the final four artifacts without model calls. Public finite models and proof-producing search contributed complementary coverage; H19 supplied the strongest governed proof-search addition. The Aggressive final lineage closed the two remaining released Order-5 rows and improved Marathon runtime on the 1,669-row batch. The broader record is equally useful for what it does not claim: compatibility is not generalization, a blocked run is not a negative scientific result, and portal readback is not a leaderboard score.
+
+\bibliographystyle{plain}
+\bibliography{paper/references}
+
+\appendix
+\section{Repository evidence map}
+
+The machine ledger is \code{experiments/RANK1\_EXPERIMENT\_LEDGER.jsonl}. Human-readable claim definitions, full chronology, methods, results, and reproduction instructions are under \code{docs/}. Frozen final artifacts and audits are under \code{dist/final/}. The repository deliberately omits private evaluation rows and raw protected journals.
+
+The overview page stated \status{evaluating} on September 2, 2026, so no private score, rank, or evaluation-completion claim was available. Separately, the official Contributor Network exposed a publication flow and displayed Stage 2 Solo and Marathon solver source posted throughout the competition and evaluation period. We therefore publish a sanitized solver-and-research snapshot while keeping the metadata-bearing evidence history private.
+
+\subsection*{Primary repository records}
+
+\begin{tabularx}{\textwidth}{p{0.42\textwidth}Y}
+\toprule
+Path & Role \\
+\midrule
+\path{dist/final/FINAL_ARTIFACT_MANIFEST.json} & Exact bytes, hashes, evaluator identity, and final artifact notes. \\
+\path{dist/final/benchmarks/formal_submission_readback_20260830_2023.json} & Portal-visible four-entry readback and track/model binding. \\
+\path{dist/final/benchmarks/post_submission_final_audit_20260831_0435.json} & Packet, focused-contract, Solo, and Marathon post-submission checks. \\
+\path{dist/final/benchmarks/solo_public1669_current_official_20260830.json} & Final Solo results on the released 1,669-row union. \\
+\path{dist/final/benchmarks/marathon_public1669_current_official_20260830.json} & Final Marathon results and runtime on the same union. \\
+\path{experiments/RANK1_EXPERIMENT_LEDGER.jsonl} & Chronological governed experiment record and provider cost fields. \\
+\path{docs/research-timeline.md} & One-row-per-hypothesis terminal interpretation for H1--H63. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Publication boundary}
+
+The private evidence history also contains personal paths, author email metadata, verbatim authorization text, one conversation identifier, runner fingerprints, and provider-use telemetry. Those fields are not needed to reproduce the mathematical claims. A public release should use a sanitized, squashed export while this hash-bound evidence repository remains private. A normal deletion commit would leave the old bytes reachable in Git history.
+
+Historical H20--H22 runners also relied on the caller's umask when creating sensitive scratch journals. They are inactive research tools, not part of the four final artifacts. A public release should omit them unless their scratch creation is rebuilt around owner-only directories and files without invalidating claims about the sealed historical bytes.
+
+\end{document}

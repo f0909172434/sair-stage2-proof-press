@@ -1,0 +1,9 @@
+{
+  "name": "Proof Press — SAIR Stage 2 Research Atlas",
+  "short_name": "Proof Press",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f1ecdf",
+  "theme_color": "#f1ecdf",
+  "icons": []
+}

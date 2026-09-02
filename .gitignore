@@ -1,0 +1,11 @@
+site/node_modules/
+site/dist/
+site/*.tsbuildinfo
+site/vite.config.js
+site/vite.config.d.ts
+tmp/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
