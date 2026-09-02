@@ -1,6 +1,6 @@
 # Proof Press — SAIR Stage 2 Lean 證書型 Solver
 
-[繁體中文](#繁體中文) · [English](#english) · [互動網站](https://f0909172434.github.io/sair-stage2-proof-press/) · [繁體中文論文](paper/main.zh-TW.md) · [英文論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) · [官方 Contributor Network](https://competition.sair.foundation/contributor-network?competition=mathematics-distillation-challenge-equational-theories-stage2)
+[繁體中文](#繁體中文) · [English](#english) · [互動網站](https://f0909172434.github.io/sair-stage2-proof-press/) · [英文研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) · [官方 Contributor Network](https://competition.sair.foundation/contributor-network?competition=mathematics-distillation-challenge-equational-theories-stage2)
 
 > 把猜想壓成證明。Search 可以提出候選，只有 Lean 接受的證書能成為結果。
 
@@ -86,8 +86,7 @@ Candidate 1–7 建立確定性主幹；H1–H63 依序測試效能、來源、L
 ### 網站與論文
 
 - [Proof Press 互動網站](https://f0909172434.github.io/sair-stage2-proof-press/)：拖動壓力桿，體驗 conjecture → candidate → Lean judge → claimable fact；可篩選 H1–H63 並切換中英文。
-- [繁體中文研究論文](paper/main.zh-TW.md)：完整整理 solver 架構、治理方法、結果、成本、限制與重現資訊。
-- [英文研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf)：可下載的六頁英文論文。
+- [英文研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf)：以六頁整理 solver 架構、治理方法、結果、成本、限制與重現資訊。
 - 網站原始碼在 [`site/`](site/)；本地執行：`cd site && npm ci && npm run build`。
 
 ---

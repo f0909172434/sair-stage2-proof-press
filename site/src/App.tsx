@@ -49,7 +49,7 @@ const t = {
     paperKicker: '六頁研究論文 · 可重現附件',
     paperTitle: '從 162/200 到四份最終 solver。',
     paperBody: '論文記錄確定性 solver 的演進、H19 與 H22、成本、失效的測量基底，並把 1,669/1,669 限定為公開相容性證據。',
-    readPaper: '下載雙語研究資料', cite: '引用本專案',
+    readPaper: '下載英文研究論文', cite: '引用本專案',
     footer: '以 Lean 證書為事實邊界。',
     inspect: '檢視證據底板', close: '關閉',
     evidenceLabel: '當前證據狀態',
