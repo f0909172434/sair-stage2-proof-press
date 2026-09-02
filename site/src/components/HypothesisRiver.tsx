@@ -71,7 +71,7 @@ export default function HypothesisRiver({ lang }: Props) {
             ? (lang === 'zh' ? '支援最終方法譜系' : 'supports final method lineage')
             : active.status === 'scientific-fail'
               ? (lang === 'zh' ? '只否定預註冊範圍' : 'negative only within preregistered scope')
-              : (lang === 'zh' ? '不等於 solver 能力結論' : 'not a solver-capability conclusion')}</strong>
+              : (lang === 'zh' ? '僅形成執行或治理結論' : 'supports an execution or governance conclusion only')}</strong>
         </div>
       </article>
     </div>

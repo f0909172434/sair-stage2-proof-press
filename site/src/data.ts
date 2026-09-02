@@ -10,7 +10,7 @@ export const artifacts = [
 ]
 
 export const methods: { id: string; title: Copy; body: Copy; mark: string }[] = [
-  { id: 'parse', mark: '01', title: { zh: '正規化', en: 'Normalize' }, body: { zh: '解析等式 AST、統一變數命名與方向，讓結構而不是題號決定路線。', en: 'Parse equation ASTs and canonicalize names and orientation, so structure—not row identity—selects a route.' } },
+  { id: 'parse', mark: '01', title: { zh: '正規化', en: 'Normalize' }, body: { zh: '解析等式 AST、統一變數命名與方向；結構決定路線，題號不參與。', en: 'Parse equation ASTs and canonicalize names and orientation. Structure selects the route; row identity is excluded.' } },
   { id: 'direct', mark: '02', title: { zh: '短證明', en: 'Short proofs' }, body: { zh: '先嘗試反身、代換、單元素與定值後果，優先產出短而可重放的 Lean 證明。', en: 'Try reflexivity, substitution, singleton, and constant consequences first, producing short replayable Lean proofs.' } },
   { id: 'models', mark: '03', title: { zh: '有限反模型', en: 'Finite countermodels' }, body: { zh: '窮舉小載體，並測試結構化運算與 645 個有來源記錄的公開有限岩漿。', en: 'Exhaust small carriers, then test structured operations and 645 provenance-bound public finite magmas.' } },
   { id: 'proof', mark: '04', title: { zh: '產生證明的搜尋', en: 'Proof-producing search' }, body: { zh: '有界引數調變、符號窄化與目標導向 beam 全程保留證明 DAG。', en: 'Bounded paramodulation, symbolic narrowing, and goal-guided beam search retain a proof DAG throughout.' } },
@@ -84,7 +84,7 @@ export const hypotheses = [
   H(60, 'blocked', '來源已 materialize，但 observer/schema/infrastructure 門失效兩列。', 'Source materialized, but observer/schema/infrastructure gates invalidated two rows.'),
   H(61, 'source', 'fresh-family abstention enumerator 在候選前出現容量不足。', 'Fresh-family abstention enumerator hit source-capacity shortfall before candidates.'),
   H(62, 'blocked', '倉庫根與官方 evaluator 根混淆，執行基底無效。', 'Repository root and official evaluator root were confused; substrate invalid.'),
-  H(63, 'blocked', '唯一 preflight 使用 Python 3.9.6 而非凍結 3.11.16，譜系關閉。', 'The sole preflight used Python 3.9.6 instead of frozen 3.11.16; lineage closed.'),
+  H(63, 'blocked', '唯一 preflight 使用 Python 3.9.6；凍結契約要求 3.11.16，因此譜系關閉。', 'The sole preflight used Python 3.9.6. The frozen contract required 3.11.16, so the lineage closed.'),
 ]
 
 export const statusLabels: Record<HypothesisStatus, Copy> = {

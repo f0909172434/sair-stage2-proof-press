@@ -8,35 +8,47 @@ const officialUrl = 'https://competition.sair.foundation/competitions/mathematic
 
 const t = {
   zh: {
-    nav: ['壓力機', '結果', '方法', '研究河流', '論文'],
+    nav: ['比賽', '壓力機', '結果', '方法', '研究河流', '論文'],
     eyebrow: 'SAIR 數學蒸餾挑戰賽 · 等式理論 Stage 2',
     heroA: '把猜想', heroB: '壓成證明。',
-    heroBody: '七個確定性 checkpoint、六十三個受治理假設、四份正式提交。整段研究只承認一種貨幣：能被 Lean 重放的證書。',
-    explore: '啟動證明壓力機', source: '檢視公開原始碼',
-    status: '官方狀態：EVALUATING', submitted: '4 份提交已讀回',
+    heroBody: '這是 SAIR Foundation 舉辦的 Mathematics Distillation Challenge — Equational Theories Stage 2（數學蒸餾挑戰賽・等式理論第二階段）。solver 要判斷一條 magma 等式能否推出另一條，每個計分答案都要附上 Lean 可檢查的證明或反模型。',
+    explore: '先看競賽任務', source: '檢視公開原始碼',
+    status: '官方狀態：EVALUATING', submitted: 'Solo 2 ＋ Marathon 2',
+    briefKicker: '競賽委託單 · Competition brief',
+    briefTitle: '讓機器解等式，也讓每個答案留下證明。',
+    briefLead: '完整賽名是 SAIR Mathematics Distillation Challenge — Equational Theories Stage 2，繁體中文為「SAIR 數學蒸餾挑戰賽・等式理論第二階段」。這一階段研究 solver 如何處理可驗證的等式推理。',
+    briefItems: [
+      { label: '比賽全名', title: 'Mathematics Distillation Challenge', body: 'SAIR Foundation｜Equational Theories Stage 2｜數學蒸餾挑戰賽・等式理論第二階段' },
+      { label: '判定 TRUE', title: '構造蘊含證明', body: '輸出可由官方 Lean judge 接受的形式證明。' },
+      { label: '判定 FALSE', title: '構造反模型', body: '輸出可由 Lean 檢查的 magma 反例證書。' },
+      { label: '兩條賽道', title: 'Solo ＋ Marathon', body: 'Solo 每題啟動新程序；Marathon 以單一程序統籌整批題目。計分核心是 accepted 題數。' },
+    ],
+    whyTitle: '為什麼做這個？',
+    whyBody: '語言模型能提出方向，可信答案還需要形式驗證。我們藉這場比賽測試一個具體命題：代數搜尋、有限反模型與模型建議能否被編排成可靠流程，並讓 Lean 對每一分負責。公開整段研究，讓成功、失敗與成本都能被重放和檢驗。',
+    officialBrief: '查看官方比賽頁面', briefNext: '進入 Proof Press',
     pressKicker: '核心體驗裝置 · Proof Press',
     pressTitle: '一條結果，必須穿過四道壓力。',
     pressBody: '結構選擇搜尋路線；搜尋只能提出候選；候選必須經過確定性 Lean judge；只有 accepted 才能進入結果表。拖動壓力桿，親自走完這條因果鏈。',
-    resultKicker: '公開輸入結果 · 不是私人排行榜',
+    resultKicker: '公開輸入結果 · 私人排名尚待官方評測',
     resultTitle: '強結果，窄宣告。',
-    resultBody: '四份最終 artifact 在 1,669 個已公開 Normal／Hard 輸入上全部透過。這個數字證明相容性與覆蓋，不代表隱藏分佈表現。',
+    resultBody: '四份最終 artifact 在 1,669 個已公開 Normal／Hard 輸入上全部透過。證據範圍止於相容性與公開輸入覆蓋；隱藏分佈表現仍未知。',
     artifacts: '四份凍結提交',
     order5: 'Order-5', model: '模型槽位', bytes: '大小', hash: 'SHA-256', publicRows: '公開 1,669',
     methodKicker: '確定性優先 · 七道證書路線',
     methodTitle: '模型可以提議，不能裁決。',
     methodBody: '相同的判斷原則貫穿每一層：先做便宜、結構化、可重放的工作；只在剩餘問題上增加搜尋；最終把所有信念交給 Lean。',
-    riverKicker: 'H1—H63 · 研究不是勝利遊行',
+    riverKicker: 'H1—H63 · 完整研究帳本',
     riverTitle: '失敗、阻斷與無結果，也要保留原名。',
-    riverBody: '點選任一編號檢視它真正回答了什麼。這裡刻意不把基礎設施錯誤包裝成科學負結果，也不把相容性測試包裝成新數學能力。',
+    riverBody: '點選任一編號檢視它真正回答了什麼。基礎設施錯誤歸類為無效執行；相容性測試歸類為公開資料證據。',
     claimsKicker: '宣告語法 · Claim grammar',
     claimsTitle: '證據先決定句子的動詞。',
     claimsBody: '「透過」「失敗」「阻斷」「已提交」互不等價。我們把它們分開，是為了讓讀者能從頁面一路追溯到證書、評估器與凍結身分。',
     publicKicker: '開放研究 · 官方 Contributor Network',
-    publicTitle: '公開不是結案，而是讓下一條證明有出處。',
+    publicTitle: '公開讓下一條證明有出處。',
     publicBody: '官方 Contributor Network 在比賽與評測期間持續公開 Stage 2 solver，允許研究者引用並繼續建構。本專案因此公開經過安全篩選的研究快照，同時把私人評測結果保持為空。',
     paperKicker: '六頁研究論文 · 可重現附件',
     paperTitle: '從 162/200 到四份最終 solver。',
-    paperBody: '論文記錄確定性 solver 的演進、H19 與 H22、成本、失效的測量基底，以及為什麼 1,669/1,669 仍不能寫成排行榜成績。',
+    paperBody: '論文記錄確定性 solver 的演進、H19 與 H22、成本、失效的測量基底，並把 1,669/1,669 限定為公開相容性證據。',
     readPaper: '下載雙語研究資料', cite: '引用本專案',
     footer: '以 Lean 證書為事實邊界。',
     inspect: '檢視證據底板', close: '關閉',
@@ -44,35 +56,47 @@ const t = {
     evidenceStages: ['猜想', '候選', 'Lean 裁決', '可宣告事實'],
   },
   en: {
-    nav: ['Press', 'Results', 'Method', 'Research river', 'Paper'],
+    nav: ['Challenge', 'Press', 'Results', 'Method', 'Research river', 'Paper'],
     eyebrow: 'SAIR Mathematics Distillation Challenge · Equational Theories Stage 2',
     heroA: 'Press conjectures', heroB: 'into proof.',
-    heroBody: 'Seven deterministic checkpoints, sixty-three governed hypotheses, and four formal submissions. The record accepts one currency: certificates Lean can replay.',
-    explore: 'Run the proof press', source: 'View public source',
-    status: 'Official status: EVALUATING', submitted: '4 submissions read back',
+    heroBody: 'This is the SAIR Foundation Mathematics Distillation Challenge — Equational Theories Stage 2. A solver decides whether one magma equation implies another, and every scored answer needs a Lean-checkable proof or countermodel.',
+    explore: 'Read the challenge brief', source: 'View public source',
+    status: 'Official status: EVALUATING', submitted: 'Solo 2 + Marathon 2',
+    briefKicker: 'Competition work order · Challenge brief',
+    briefTitle: 'Machine-solved equations, with evidence attached.',
+    briefLead: 'The full competition name is SAIR Mathematics Distillation Challenge — Equational Theories Stage 2. This stage studies how solvers handle verifiable equational reasoning.',
+    briefItems: [
+      { label: 'Full competition name', title: 'Mathematics Distillation Challenge', body: 'SAIR Foundation | Equational Theories Stage 2' },
+      { label: 'TRUE verdict', title: 'Construct a proof', body: 'Return a formal implication proof accepted by the official Lean judge.' },
+      { label: 'FALSE verdict', title: 'Construct a countermodel', body: 'Return a Lean-checkable magma counterexample certificate.' },
+      { label: 'Two tracks', title: 'Solo + Marathon', body: 'Solo starts a fresh process per problem. Marathon coordinates the full batch in one process. Accepted count drives the score.' },
+    ],
+    whyTitle: 'Why build this?',
+    whyBody: 'Language models can suggest directions; formal verification establishes trust. This competition lets us test a concrete proposition: can algebraic search, finite countermodels, and model suggestions form a reliable pipeline where Lean accounts for every point? Publishing the full record makes successes, failures, and costs replayable.',
+    officialBrief: 'Open the official competition page', briefNext: 'Enter the Proof Press',
     pressKicker: 'Core experience · Proof Press',
     pressTitle: 'A result must survive four kinds of pressure.',
     pressBody: 'Structure selects a route. Search may only propose. A deterministic Lean judge decides. Only accepted certificates enter the result table. Drag the lever to traverse that causal chain.',
-    resultKicker: 'Released-input results · not a private leaderboard',
+    resultKicker: 'Released-input results · private ranking pending',
     resultTitle: 'Strong result. Narrow claim.',
-    resultBody: 'All four final artifacts passed all 1,669 released Normal/Hard inputs. That establishes compatibility and coverage—not hidden-distribution performance.',
+    resultBody: 'All four final artifacts passed all 1,669 released Normal/Hard inputs. The evidence covers compatibility and released-input coverage. Hidden-distribution performance remains unknown.',
     artifacts: 'Four frozen submissions',
     order5: 'Order-5', model: 'Model slot', bytes: 'Bytes', hash: 'SHA-256', publicRows: 'Released 1,669',
     methodKicker: 'Deterministic first · seven certificate lanes',
     methodTitle: 'A model may propose. It cannot decide.',
     methodBody: 'One judgment runs through every layer: do cheap, structural, replayable work first; add search only for residuals; submit every belief to Lean.',
-    riverKicker: 'H1—H63 · research is not a victory parade',
+    riverKicker: 'H1—H63 · the complete research ledger',
     riverTitle: 'Failures, blocks, and non-results keep their names.',
-    riverBody: 'Select any index to see what it actually answered. Infrastructure defects are not scientific negatives; compatibility checks are not new mathematical capability.',
+    riverBody: 'Select any index to see what it actually answered. Infrastructure defects remain invalid runs; compatibility checks remain released-input evidence.',
     claimsKicker: 'Claim grammar',
     claimsTitle: 'Evidence chooses the verb.',
-    claimsBody: 'Passed, failed, blocked, and submitted are not synonyms. Separating them lets a reader trace every sentence back to a certificate, evaluator, and frozen identity.',
+    claimsBody: 'Passed, failed, blocked, and submitted map to distinct evidence classes. A reader can trace every sentence back to a certificate, evaluator, and frozen identity.',
     publicKicker: 'Open research · official Contributor Network',
-    publicTitle: 'Publication is not closure. It gives the next proof provenance.',
+    publicTitle: 'Publication gives the next proof provenance.',
     publicBody: 'The official Contributor Network published Stage 2 solvers throughout the competition and evaluation, inviting citation and reuse. This project therefore releases a security-filtered research snapshot while leaving private results blank.',
     paperKicker: 'Six-page paper · reproducibility appendix',
     paperTitle: 'From 162/200 to four final solvers.',
-    paperBody: 'The paper records the deterministic lineage, H19 and H22, cost, failed measurement substrates, and why 1,669/1,669 is still not a leaderboard score.',
+    paperBody: 'The paper records the deterministic lineage, H19 and H22, cost, failed measurement substrates, and confines 1,669/1,669 to released-input compatibility evidence.',
     readPaper: 'Download research paper', cite: 'Cite this project',
     footer: 'Lean certificates are the fact boundary.',
     inspect: 'Inspect evidence plate', close: 'Close',
@@ -81,10 +105,11 @@ const t = {
   },
 }
 
-const navIds = ['press', 'results', 'method', 'river', 'paper']
+const navIds = ['brief', 'press', 'results', 'method', 'river', 'paper']
 
 const chapterEvidenceStage: Record<string, number> = {
   hero: 0,
+  brief: 0,
   press: 1,
   results: 3,
   method: 3,
@@ -200,7 +225,7 @@ function App() {
             <h1><span>{copy.heroA}</span><em>{copy.heroB}</em></h1>
             <p className="hero-deck">{copy.heroBody}</p>
             <div className="hero-actions">
-              <a className="action primary" href="#press">{copy.explore}<span>↓</span></a>
+              <a className="action primary" href="#brief">{copy.explore}<span>↓</span></a>
               <a className="action text" href={repoUrl}>{copy.source}<span>↗</span></a>
             </div>
           </div>
@@ -218,6 +243,38 @@ function App() {
             <span><i className="pulse" />{copy.status}</span>
             <span>{copy.submitted}</span>
             <span>Lean 4.33.1</span>
+          </div>
+        </section>
+
+        <section className="chapter brief-chapter" id="brief" data-chapter="brief">
+          <div className="brief-head">
+            <div>
+              <p className="kicker">{copy.briefKicker}</p>
+              <h2>{copy.briefTitle}</h2>
+            </div>
+            <p>{copy.briefLead}</p>
+          </div>
+          <div className="brief-grid" aria-label={lang === 'zh' ? '競賽重點' : 'Challenge essentials'}>
+            {copy.briefItems.map((item, index) => (
+              <article key={item.label}>
+                <span>0{index + 1}</span>
+                <p>{item.label}</p>
+                <h3>{item.title}</h3>
+                <div>{item.body}</div>
+              </article>
+            ))}
+          </div>
+          <div className="brief-motive">
+            <div className="brief-register" aria-hidden="true"><i /><i /><b>WHY</b></div>
+            <div>
+              <p className="kicker">{lang === 'zh' ? '04 / 研究動機' : '04 / Research motive'}</p>
+              <h3>{copy.whyTitle}</h3>
+              <p className="brief-motive-body">{copy.whyBody}</p>
+              <div className="brief-actions">
+                <a className="action text" href={officialUrl}>{copy.officialBrief}<span>↗</span></a>
+                <a className="action primary" href="#press">{copy.briefNext}<span>↓</span></a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -323,7 +380,7 @@ function App() {
               ['RELEASED-PUBLIC VERIFIED', lang === 'zh' ? '在指定公開輸入與 evaluator 上 accepted' : 'accepted on named released inputs and evaluator'],
               ['SCIENTIFIC FAIL', lang === 'zh' ? '只否定預序號產生器制與門檻' : 'negative only for the preregistered mechanism and gate'],
               ['BLOCKED / INVALID', lang === 'zh' ? '沒有科學結論' : 'no scientific conclusion'],
-              ['FORMAL READBACK', lang === 'zh' ? '證明提交發生，不證明評估成功' : 'proves submission, not evaluation success'],
+              ['FORMAL READBACK', lang === 'zh' ? '確認提交發生；評估成功仍待官方結果' : 'confirms submission; evaluation success remains pending'],
             ].map(([title, body], index) => <div key={title} style={{ '--strip-index': index } as React.CSSProperties}><span>0{index + 1}</span><strong>{title}</strong><p>{body}</p></div>)}
           </div>
         </section>
@@ -382,7 +439,7 @@ function App() {
               <span>PRIVATE SCORE</span><strong>UNAVAILABLE</strong>
               <span>PROVIDER CALLS · FINAL PUBLIC</span><strong>0</strong>
             </div>
-            <p className="ledger-note">{lang === 'zh' ? '按 G 可隨時開啟或收起這塊底板。這裡列的是稽核事實，不是排行榜結果。' : 'Press G to toggle this plate. These are audit facts, not leaderboard results.'}</p>
+            <p className="ledger-note">{lang === 'zh' ? '按 G 可隨時開啟或收起這塊底板。底板只列稽核事實；排行榜結果仍空白。' : 'Press G to toggle this plate. The plate contains audit facts; leaderboard results remain blank.'}</p>
           </article>
         </div>
       )}
