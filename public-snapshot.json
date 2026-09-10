@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "evaluator_repository": "https://github.com/SAIRcompetition/equational-theories-lean-stage2",
+  "evaluator_commit": "817a4653bf762584931d49c6714c9fcfab7df66a",
+  "lean_version": "4.33.1",
+  "artifacts": [
+    {
+      "path": "dist/final/solo_safe/solver.py",
+      "bytes": 268763,
+      "sha256": "a81025ac454e964365f5b53b1928af3d4e4276f374d62d5b05f34264afada85a"
+    },
+    {
+      "path": "dist/final/solo_aggressive/solver.py",
+      "bytes": 360443,
+      "sha256": "faf8468e6183638d35607c3bf1ae0685da838f3bfed7009c9bd5b6402071e70a"
+    },
+    {
+      "path": "dist/final/marathon_safe/solver.py",
+      "bytes": 272898,
+      "sha256": "05e3b837d8cdac8a0299fe66592bde787e57b10c50a0eefe24d6fdf9ae4f3d5c"
+    },
+    {
+      "path": "dist/final/marathon_aggressive/solver.py",
+      "bytes": 366197,
+      "sha256": "c87e44bda89f08dad7a8a12147b28ba77a2fe288c3c3947c4dfe06b2154b8c21"
+    }
+  ]
+}

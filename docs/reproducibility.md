@@ -20,15 +20,24 @@ The final audit used:
 - Python 3.11 for packet and contract checks;
 - repository branch `agent/final-24h-dual-track-sprint` at pre-publication audit base `56684f74569d21da043d4dc4a40e47ff9bae80bd`.
 
-## Verification sequence
+## Start with the public snapshot
 
-1. Clone the official evaluator and check out the exact commit above.
-2. Install its pinned Lean/Mathlib toolchain.
-3. Verify each final solver hash and byte count against `dist/final/FINAL_ARTIFACT_MANIFEST.json`.
-4. Run `scripts/verify_final_upload_packet.py`. The script is an identity and packaging check; its pre-submission state fields are historical.
-5. Run the focused final-artifact, layout, fast-path, and note contracts listed in the post-submission audit.
-6. Run the official Solo harness for each Solo file and the official Marathon scorer for each Marathon file.
-7. Record input source hashes, row counts, environment versions, accepted status counts, model/token use, output hashes, and a second-run projection when the claim depends on determinism.
+Python 3.11+ and the standard library are sufficient; no model, API key, or Lean installation is needed:
+
+```bash
+python3 tools/verify_public_snapshot.py --replay-candidates
+python3 tools/test_public_snapshot.py
+```
+
+This checks all four frozen solver hashes, byte counts and Python syntax against `public-snapshot.json`, then replays three tiny synthetic candidate-generation cases. Generated candidate text is not Lean acceptance or a new competition evaluation.
+
+## Rerun with the official evaluator
+
+1. Clone the [official evaluator](https://github.com/SAIRcompetition/equational-theories-lean-stage2), check out the full commit above, and install its documented Lean/Mathlib environment.
+2. Run the public identity check, then use the appropriate `dist/final/` solver with the official Solo harness or Marathon scorer and evaluation inputs you can access.
+3. Record input hashes, row counts, environment versions, accepted statuses, model/token use and output hashes. Repeat when making a determinism claim.
+
+The historical full workspace's `FINAL_ARTIFACT_MANIFEST.json`, `verify_final_upload_packet.py`, contract tests and dataset role registry are not included in this public snapshot. They are not executable reproduction steps for this checkout.
 
 On macOS, the official `lake env` discovery path once stalled. The recorded successful workaround used direct Lean/Lake 4.33.1 binaries and an explicit `JUDGE_LEAN_PATH` assembled from the official checkout's built dependencies. This is an environment workaround, not a solver change.
 
@@ -43,7 +52,7 @@ The 1,669-row combined study contains:
 | `hard2` | 200 |
 | `hard3` | 400 |
 
-Order-5 is a separate released 200-row source. Source roles and opened/blind state are tracked in `experiments/DATASET_ROLE_REGISTRY.json`.
+Order-5 is a separate released 200-row source. The full source-role and opened/blind registry belongs to the historical workspace and is not included in this public snapshot.
 
 ## What cannot be reproduced from this repository alone
 

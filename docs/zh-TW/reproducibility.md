@@ -20,15 +20,24 @@ final audit 使用：
 - Python 3.11 執行 packet 與 contract checks；
 - repository branch `agent/final-24h-dual-track-sprint`，pre-publication audit base 為 `56684f74569d21da043d4dc4a40e47ff9bae80bd`。
 
-## 驗證順序
+## 從公開快照開始
 
-1. clone 官方 evaluator，checkout 上述精確 commit。
-2. 安裝 evaluator pin 住的 Lean／Mathlib toolchain。
-3. 對照 `dist/final/FINAL_ARTIFACT_MANIFEST.json`，驗證每份 final solver hash 與 byte count。
-4. 執行 `scripts/verify_final_upload_packet.py`。該 script 檢查 identity 與 packaging；其中 pre-submission state field 是歷史值。
-5. 執行 post-submission audit 列出的 final-artifact、layout、fast-path 與 note contract tests。
-6. 每份 Solo file 執行官方 Solo harness；每份 Marathon file 執行官方 Marathon scorer。
-7. 記錄 input source hash、row count、environment version、accepted status count、model／token use、output hash；需要主張 determinism 時，再記錄第二次執行 projection。
+Python 3.11+，只使用標準庫；不需要模型、API 金鑰或 Lean：
+
+```bash
+python3 tools/verify_public_snapshot.py --replay-candidates
+python3 tools/test_public_snapshot.py
+```
+
+這會依 `public-snapshot.json` 檢查四份凍結 solver 的完整 SHA-256、大小與 Python 語法，再重播三個極小的合成候選生成案例。候選生成通過不代表 Lean 接受，也不是新的競賽評分。
+
+## 使用官方 evaluator 重跑
+
+1. clone [官方 evaluator](https://github.com/SAIRcompetition/equational-theories-lean-stage2)，checkout 上述完整 commit，依其文件安裝 Lean／Mathlib。
+2. 先執行上述公開 identity check，再將 `dist/final/` 對應 solver 交給官方 Solo harness 或 Marathon scorer，使用有權取得的評測輸入。
+3. 記錄輸入 hash、row count、環境、accepted status、模型／token 用量與輸出 hash。需要 determinism 時，再執行第二次比較。
+
+歷史完整工作區的 `FINAL_ARTIFACT_MANIFEST.json`、`verify_final_upload_packet.py`、contract tests 與 dataset role registry 沒有包含在這份公開快照；它們不是本快照的可執行重現步驟。
 
 macOS 上曾有一次官方 `lake env` discovery path 停滯。通過驗證的 workaround 使用 direct Lean／Lake 4.33.1 binaries，並從官方 checkout 的 built dependencies 組合明確 `JUDGE_LEAN_PATH`。這是 environment entry-path 調整，沒有改動 solver。
 
@@ -43,7 +52,7 @@ macOS 上曾有一次官方 `lake env` discovery path 停滯。通過驗證的 w
 | `hard2` | 200 |
 | `hard3` | 400 |
 
-Order-5 是另一個公開的 200-row source。source role 與 opened／blind state 記錄在 `experiments/DATASET_ROLE_REGISTRY.json`。
+Order-5 是另一個公開的 200-row source。完整的 source role 與 opened／blind registry 保留於歷史工作區，未包含在此公開快照。
 
 ## 只靠本 repository 無法重現的項目
 
