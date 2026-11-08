@@ -1,6 +1,6 @@
 # Proof Press：SAIR Stage 2 Lean 證書型 Solver
 
-[繁體中文](#繁體中文) · [English](#english) · [互動網站](https://f0909172434.github.io/sair-stage2-proof-press/) · [英文研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) · [官方 Contributor Network](https://competition.sair.foundation/contributor-network?competition=mathematics-distillation-challenge-equational-theories-stage2)
+[繁體中文](#繁體中文) · [English](#english) · [互動網站](https://chih-kai-wang.github.io/sair-stage2-proof-press/) · [英文研究論文 PDF](https://chih-kai-wang.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) · [官方 Contributor Network](https://competition.sair.foundation/contributor-network?competition=mathematics-distillation-challenge-equational-theories-stage2)
 
 > 搜尋可以提出候選答案，但只有 Lean 接受的證書才算結果。
 
@@ -93,8 +93,8 @@ Candidate 1–7 建立了確定性的主幹。H1–H63 接著依序測試效能�
 
 ### 網站與論文
 
-- [Proof Press 互動網站](https://f0909172434.github.io/sair-stage2-proof-press/)：拖動頁面上的控制桿，可以看到一個猜想如何變成候選答案、交給 Lean judge 檢查，最後成為可以主張的事實。網站可以篩選 H1–H63，也可以切換中英文。
-- [英文研究論文 PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf)：用六頁整理 solver 架構、治理方法、結果、成本、限制與重現資訊。
+- [Proof Press 互動網站](https://chih-kai-wang.github.io/sair-stage2-proof-press/)：拖動頁面上的控制桿，可以看到一個猜想如何變成候選答案、交給 Lean judge 檢查，最後成為可以主張的事實。網站可以篩選 H1–H63，也可以切換中英文。
+- [英文研究論文 PDF](https://chih-kai-wang.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf)：用六頁整理 solver 架構、治理方法、結果、成本、限制與重現資訊。
 - 網站原始碼在 [`site/`](site/)，本地建置的指令是 `cd site && npm ci && npm run build`。
 
 ---
@@ -180,8 +180,8 @@ See [Publication readiness](docs/publication-readiness.md), [Security audit](doc
 
 ### Website and paper
 
-- [Proof Press](https://f0909172434.github.io/sair-stage2-proof-press/) is an interactive bilingual site. It shows how a conjecture becomes a candidate, goes to the Lean judge and ends as a fact you can claim.
-- The [research paper PDF](https://f0909172434.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) covers the architecture, governance, results, cost, limitations and reproduction.
+- [Proof Press](https://chih-kai-wang.github.io/sair-stage2-proof-press/) is an interactive bilingual site. It shows how a conjecture becomes a candidate, goes to the Lean judge and ends as a fact you can claim.
+- The [research paper PDF](https://chih-kai-wang.github.io/sair-stage2-proof-press/paper/sair_stage2_solver_research.pdf) covers the architecture, governance, results, cost, limitations and reproduction.
 - The website source lives in [`site/`](site/). Build it locally with `cd site && npm ci && npm run build`.
 
 ## Citation / 引用
@@ -192,7 +192,7 @@ See [Publication readiness](docs/publication-readiness.md), [Security audit](doc
   title        = {Proof Press: Lean-Certified Portfolio Solving for Equational Implication},
   year         = {2026},
   howpublished = {GitHub repository and research artifact},
-  url          = {https://github.com/f0909172434/sair-stage2-proof-press}
+  url          = {https://github.com/Chih-Kai-Wang/sair-stage2-proof-press}
 }
 ```
 

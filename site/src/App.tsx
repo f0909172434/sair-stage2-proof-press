@@ -3,7 +3,7 @@ import ProofPress from './components/ProofPress'
 import HypothesisRiver from './components/HypothesisRiver'
 import { artifacts, methods, type Lang } from './data'
 
-const repoUrl = 'https://github.com/f0909172434/sair-stage2-proof-press'
+const repoUrl = 'https://github.com/Chih-Kai-Wang/sair-stage2-proof-press'
 const officialUrl = 'https://competition.sair.foundation/competitions/mathematics-distillation-challenge-equational-theories-stage2/overview'
 
 const t = {
