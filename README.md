@@ -22,9 +22,10 @@
 | Released Order-5 | Marathon Safe 198/200；Aggressive 200/200 | Aggressive 在這個已公開集合多取得兩份 Lean 證書 |
 | Marathon 公開批次時間 | Safe 169.00 s；Aggressive 152.23 s（−9.92%） | 指定 workload 的描述性 wall-time 測量 |
 | Formal submission readback | 入口顯示 4 份 participation | 四份 solver 曾成功送達並由入口讀回 |
-| Private evaluation | 尚無 organizer-published score／rank | 不宣稱私人分數、名次或隱藏分布提升 |
+| Official Main Leaderboard（2026-10-04 公布；2026-11-11 讀取） | 四份 solver 都是 193/200：Solo Safe（Gemma 4 31B）第 20 名／52 隊、Solo Aggressive（gpt-oss-120b）第 18 名／52 隊、Marathon Safe（Gemma 4 31B）第 16 名／32 隊、Marathon Aggressive（gpt-oss-120b）第 14 名／39 隊；四組都與其他隊同分並列 | 官方公布的 Main Leaderboard 名次。比賽頁仍標示 `EVALUATING`，所以不宣稱這是最終名次或獎項 |
+| Official Research Leaderboard（2026-09-18 公布） | 四份 solver 都記為 0 分，許多隊伍也是 0 | 本 repo 尚未分析這個榜的計分方式，不據此做任何主張 |
 
-表中的公開輸入結果都綁定官方 evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` 與 Lean `4.33.1`。1,669/1,669 有力地說明四份 solver 與公開輸入相容，而且涵蓋了全部公開輸入，但它不是私人排行榜的成績。
+表中的公開輸入結果都綁定官方 evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` 與 Lean `4.33.1`。1,669/1,669 有力地說明四份 solver 與公開輸入相容，而且涵蓋了全部公開輸入，但它不是私人排行榜的成績；正式評估成績見上表的官方 Main Leaderboard。
 
 ### 四份最終 solver
 
@@ -75,7 +76,7 @@ Candidate 1–7 建立了確定性的主幹。H1–H63 接著依序測試效能�
 
 ### 這份紀錄不主張什麼
 
-- 不主張任何私人分數、名次或獎項。官方尚未公布這些結果。
+- 名次只引用官方 Main Leaderboard（2026-10-04 公布）。比賽頁在 2026-11-11 仍標示 `EVALUATING`，因此不主張最終名次或任何獎項。
 - 不主張 Aggressive 在隱藏題目分布上普遍優於 Safe。Aggressive 多解出的兩題，只是在公開的 Order-5 集合上量到的。
 - 不主張本地相容性測試等同於正式比賽的沙盒環境。
 
@@ -85,7 +86,7 @@ Candidate 1–7 建立了確定性的主幹。H1–H63 接著依序測試效能�
 
 ### 公開政策與安全邊界
 
-2026-09-02 讀回時，官方頁面仍標示 `EVALUATING`。同一時間，官方 Contributor Network 提供 `Publish Item` 功能，而且從 2026-05-11 到 2026-09-01 一直公開展示 Stage 2 Solo 與 Marathon 的 solver 原始碼。這可以作為發布 solver 與研究材料的依據，但不能用來宣稱評估已經完成，也不能用來宣稱私人分數或名次。
+2026-09-02 讀回時，官方頁面仍標示 `EVALUATING`。同一時間，官方 Contributor Network 提供 `Publish Item` 功能，而且從 2026-05-11 到 2026-09-01 一直公開展示 Stage 2 Solo 與 Marathon 的 solver 原始碼。這可以作為發布 solver 與研究材料的依據，但不能用來宣稱評估已經完成，也不能用來宣稱私人分數或名次。2026-11-11 再查：官方已於 2026-10-04 公布 Main Leaderboard（見上方結果表），比賽頁仍標示 `EVALUATING`。
 
 公開 repo 是依白名單挑選檔案後重新建立的乾淨快照。完整的研究證據 Git 歷史仍然保持私有，因為舊 commit 含有不必要的個人 email、絕對路徑、team 與 conversation identifier、授權文字與主機指紋。一般的刪除 commit 無法把這些 bytes 從 Git 歷史中移除。
 
@@ -117,9 +118,10 @@ The public release keeps the methods, source code, aggregate results, negative r
 | Released Order-5 | Marathon Safe 198/200; Aggressive 200/200 | Aggressive produced two additional Lean certificates on this released set |
 | Released Marathon batch time | Safe 169.00 s; Aggressive 152.23 s (−9.92%) | Descriptive wall-time result for this workload |
 | Formal submission readback | Four participation entries were visible | Four solvers reached the portal and were read back |
-| Private evaluation | No organizer-published score or rank | No private-score, rank, or hidden-distribution claim |
+| Official Main Leaderboard (published 2026-10-04; read 2026-11-11) | All four solvers scored 193/200: Solo Safe (Gemma 4 31B) rank 20 of 52 teams, Solo Aggressive (gpt-oss-120b) rank 18 of 52, Marathon Safe (Gemma 4 31B) rank 16 of 32, Marathon Aggressive (gpt-oss-120b) rank 14 of 39; each rank is shared with other teams on the same score | Organizer-published Main Leaderboard ranks. The competition page still shows `EVALUATING`, so no final-rank or prize claim |
+| Official Research Leaderboard (published 2026-09-18) | All four solvers are listed at 0, as are many other teams | This repository has not analysed how that board is scored and makes no claim from it |
 
-All released-input results are tied to official evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` and Lean `4.33.1`. The 1,669/1,669 result is strong evidence that the solvers are compatible with the released inputs and cover all of them. It is not a private leaderboard result.
+All released-input results are tied to official evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` and Lean `4.33.1`. The 1,669/1,669 result is strong evidence that the solvers are compatible with the released inputs and cover all of them. It is not a private leaderboard result; the official evaluation result is the Main Leaderboard row in the table above.
 
 ### The four final solvers
 
@@ -162,7 +164,7 @@ See the [H1–H63 timeline](docs/research-timeline.md), [Results](docs/results.m
 
 ### What this record does not claim
 
-- It claims no private score, rank or prize. The organizers have not published one.
+- Ranks are quoted only from the official Main Leaderboard (published 2026-10-04). The competition page still showed `EVALUATING` on 2026-11-11, so the record claims no final rank and no prize.
 - It does not claim that Aggressive beats Safe on the hidden distribution. Its two extra accepted rows were measured only on the released Order-5 set.
 - It does not claim that a local compatibility check is equivalent to the production sandbox.
 
@@ -172,7 +174,7 @@ The recorded deterministic runs of Candidate 1–19 and the final released-input
 
 ### Publication and security boundary
 
-On 2026-09-02 the competition page still showed `EVALUATING`. At the same time, the official Contributor Network offered a `Publish Item` flow and publicly displayed Stage 2 Solo and Marathon solver source posted from 2026-05-11 through 2026-09-01. That supports sharing the solvers and research materials. It does not show that evaluation has finished, and it gives no private score or rank.
+On 2026-09-02 the competition page still showed `EVALUATING`. At the same time, the official Contributor Network offered a `Publish Item` flow and publicly displayed Stage 2 Solo and Marathon solver source posted from 2026-05-11 through 2026-09-01. That supports sharing the solvers and research materials. It does not show that evaluation has finished, and it gives no private score or rank. Rechecked on 2026-11-11: the organizers published the Main Leaderboard on 2026-10-04 (see the results table above), and the competition page still shows `EVALUATING`.
 
 The public repository is a clean snapshot built from an explicit allowlist of files. The complete Git history of the evidence repository stays private, because old commits contain unnecessary personal email, absolute paths, team and conversation identifiers, authorization text and host fingerprints. A normal deletion commit would not remove those bytes from Git history.
 
