@@ -2,7 +2,7 @@
 
 [English PDF](../output/pdf/sair_stage2_solver_research.pdf) · [English LaTeX](main.tex)
 
-`main.tex` and `references.bib` are the source for the project paper. The manuscript reports released-input results, governed research outcomes, cost, and limitations. It does not claim a private score or rank.
+`main.tex` and `references.bib` are the source for the project paper. The manuscript reports released-input results, governed research outcomes, cost, and limitations. A postscript (November 11, 2026) adds the organizer-published Main Leaderboard result; the paper claims no final rank.
 
 Build from the repository root:
 
