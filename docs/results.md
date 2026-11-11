@@ -70,4 +70,4 @@ The full chronology and source links are in [`research-timeline.md`](research-ti
 
 The portal displayed four matching entries after upload. The readback binds each visible track/model selection and file size to a local artifact hash. It establishes that submission occurred, not that evaluation succeeded.
 
-The official page remained `EVALUATING` on 2026-09-02. On 2026-10-04 the organizers published the Main Leaderboard: all four solvers scored 193/200 (Solo Gemma rank 20 of 52, Solo gpt-oss rank 18 of 52, Marathon Gemma rank 16 of 32, Marathon gpt-oss rank 14 of 39, each tied). The page still showed `EVALUATING` on 2026-11-11, so these are not claimed as final ranks.
+The official page remained `EVALUATING` on 2026-09-02. On 2026-10-04 the organizers published the Main Leaderboard: all four solvers scored 193/200 (Solo Gemma rank 20 of 294, Solo gpt-oss rank 18 of 294, Marathon Gemma rank 16 of 294, Marathon gpt-oss rank 14 of 294, each tied; 294 is the participant count shown on the competition page). The page still showed `EVALUATING` on 2026-11-11, so these are not claimed as final ranks.

@@ -22,7 +22,7 @@
 | Released Order-5 | Marathon Safe 198/200；Aggressive 200/200 | Aggressive 在這個已公開集合多取得兩份 Lean 證書 |
 | Marathon 公開批次時間 | Safe 169.00 s；Aggressive 152.23 s（−9.92%） | 指定 workload 的描述性 wall-time 測量 |
 | Formal submission readback | 入口顯示 4 份 participation | 四份 solver 曾成功送達並由入口讀回 |
-| Official Main Leaderboard（2026-10-04 公布；2026-11-11 讀取） | 四份 solver 都是 193/200：Solo Safe（Gemma 4 31B）第 20 名／52 隊、Solo Aggressive（gpt-oss-120b）第 18 名／52 隊、Marathon Safe（Gemma 4 31B）第 16 名／32 隊、Marathon Aggressive（gpt-oss-120b）第 14 名／39 隊；四組都與其他隊同分並列 | 官方公布的 Main Leaderboard 名次。比賽頁仍標示 `EVALUATING`，所以不宣稱這是最終名次或獎項 |
+| Official Main Leaderboard（2026-10-04 公布；2026-11-11 讀取） | 四份 solver 都是 193/200：Solo Safe（Gemma 4 31B）第 20 名／294、Solo Aggressive（gpt-oss-120b）第 18 名／294、Marathon Safe（Gemma 4 31B）第 16 名／294、Marathon Aggressive（gpt-oss-120b）第 14 名／294；四組都與其他隊同分並列 | 官方公布的 Main Leaderboard 名次；分母 294 是比賽頁標示的參加數（Participants）。比賽頁仍標示 `EVALUATING`，所以不宣稱這是最終名次或獎項 |
 | Official Research Leaderboard（2026-09-18 公布） | 四份 solver 都記為 0 分，許多隊伍也是 0 | 本 repo 尚未分析這個榜的計分方式，不據此做任何主張 |
 
 表中的公開輸入結果都綁定官方 evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` 與 Lean `4.33.1`。1,669/1,669 有力地說明四份 solver 與公開輸入相容，而且涵蓋了全部公開輸入，但它不是私人排行榜的成績；正式評估成績見上表的官方 Main Leaderboard。
@@ -118,7 +118,7 @@ The public release keeps the methods, source code, aggregate results, negative r
 | Released Order-5 | Marathon Safe 198/200; Aggressive 200/200 | Aggressive produced two additional Lean certificates on this released set |
 | Released Marathon batch time | Safe 169.00 s; Aggressive 152.23 s (−9.92%) | Descriptive wall-time result for this workload |
 | Formal submission readback | Four participation entries were visible | Four solvers reached the portal and were read back |
-| Official Main Leaderboard (published 2026-10-04; read 2026-11-11) | All four solvers scored 193/200: Solo Safe (Gemma 4 31B) rank 20 of 52 teams, Solo Aggressive (gpt-oss-120b) rank 18 of 52, Marathon Safe (Gemma 4 31B) rank 16 of 32, Marathon Aggressive (gpt-oss-120b) rank 14 of 39; each rank is shared with other teams on the same score | Organizer-published Main Leaderboard ranks. The competition page still shows `EVALUATING`, so no final-rank or prize claim |
+| Official Main Leaderboard (published 2026-10-04; read 2026-11-11) | All four solvers scored 193/200: Solo Safe (Gemma 4 31B) rank 20 of 294, Solo Aggressive (gpt-oss-120b) rank 18 of 294, Marathon Safe (Gemma 4 31B) rank 16 of 294, Marathon Aggressive (gpt-oss-120b) rank 14 of 294; each rank is shared with other teams on the same score | Organizer-published Main Leaderboard ranks; 294 is the participant count shown on the competition page. The competition page still shows `EVALUATING`, so no final-rank or prize claim |
 | Official Research Leaderboard (published 2026-09-18) | All four solvers are listed at 0, as are many other teams | This repository has not analysed how that board is scored and makes no claim from it |
 
 All released-input results are tied to official evaluator commit `817a4653bf762584931d49c6714c9fcfab7df66a` and Lean `4.33.1`. The 1,669/1,669 result is strong evidence that the solvers are compatible with the released inputs and cover all of them. It is not a private leaderboard result; the official evaluation result is the Main Leaderboard row in the table above.

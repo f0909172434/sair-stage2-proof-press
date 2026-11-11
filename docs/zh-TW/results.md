@@ -70,4 +70,4 @@ H 系列產生一條可重用方法線、數個模型輔助研究結果、兩個
 
 上傳後，portal 顯示四筆相符 entry。Readback 把每筆可見的 track／model selection 與 file size 綁定到本機 artifact hash，證明提交確實發生。Evaluation success 仍要等待官方結果。
 
-官方頁面在 2026-09-02 仍顯示 `EVALUATING`。官方於 2026-10-04 公布 Main Leaderboard：四份 solver 都是 193/200（Solo Gemma 第 20 名／52 隊、Solo gpt-oss 第 18 名／52 隊、Marathon Gemma 第 16 名／32 隊、Marathon gpt-oss 第 14 名／39 隊，皆為同分並列）。2026-11-11 比賽頁仍標示 `EVALUATING`，因此不把這些當成最終名次。
+官方頁面在 2026-09-02 仍顯示 `EVALUATING`。官方於 2026-10-04 公布 Main Leaderboard：四份 solver 都是 193/200（Solo Gemma 第 20 名／294、Solo gpt-oss 第 18 名／294、Marathon Gemma 第 16 名／294、Marathon gpt-oss 第 14 名／294，皆為同分並列；分母 294 為比賽頁標示的參加數）。2026-11-11 比賽頁仍標示 `EVALUATING`，因此不把這些當成最終名次。
